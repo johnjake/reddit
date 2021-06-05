@@ -6,4 +6,6 @@
     <string name="newTopic">New Topic</string>
     <string name="profile">Profile</string>
     <string name="search">search</string>
+    <string name="more_options">more option</string>
+    <string name="alt_feed">alt feed</string>
 </resources>

@@ -4,29 +4,40 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/reddit/app/src/main/res/drawable-v24/ic_search.xml" value="0.525" />
+        <entry key="..\:/reddit/app/src/main/res/drawable-v24/ic_share_android.xml" value="0.525" />
         <entry key="..\:/reddit/app/src/main/res/drawable-v24/ic_star.xml" value="0.5208333333333334" />
+        <entry key="..\:/reddit/app/src/main/res/drawable/bg_circle_black_alpha_80.xml" value="0.525" />
         <entry key="..\:/reddit/app/src/main/res/drawable/black_gradient_appbar_background.xml" value="0.525" />
         <entry key="..\:/reddit/app/src/main/res/drawable/black_gradient_background.xml" value="0.525" />
         <entry key="..\:/reddit/app/src/main/res/drawable/edit_text_background.xml" value="0.525" />
         <entry key="..\:/reddit/app/src/main/res/drawable/email_text_background.xml" value="0.525" />
+        <entry key="..\:/reddit/app/src/main/res/drawable/ic_comment.xml" value="0.525" />
+        <entry key="..\:/reddit/app/src/main/res/drawable/ic_globe.xml" value="0.525" />
         <entry key="..\:/reddit/app/src/main/res/drawable/ic_home_menu.xml" value="0.525" />
         <entry key="..\:/reddit/app/src/main/res/drawable/ic_home_menu_checked.xml" value="0.525" />
         <entry key="..\:/reddit/app/src/main/res/drawable/ic_home_menu_unchecked.xml" value="0.525" />
         <entry key="..\:/reddit/app/src/main/res/drawable/ic_inbox_menu.xml" value="0.525" />
         <entry key="..\:/reddit/app/src/main/res/drawable/ic_inbox_menu_checked.xml" value="0.525" />
         <entry key="..\:/reddit/app/src/main/res/drawable/ic_inbox_menu_unchecked.xml" value="0.525" />
+        <entry key="..\:/reddit/app/src/main/res/drawable/ic_overflow.xml" value="0.525" />
         <entry key="..\:/reddit/app/src/main/res/drawable/ic_profile.xml" value="0.31197916666666664" />
         <entry key="..\:/reddit/app/src/main/res/drawable/ic_profile_menu.xml" value="0.525" />
         <entry key="..\:/reddit/app/src/main/res/drawable/ic_profile_menu_checked.xml" value="0.525" />
         <entry key="..\:/reddit/app/src/main/res/drawable/ic_profile_menu_unchecked.xml" value="0.525" />
         <entry key="..\:/reddit/app/src/main/res/drawable/ic_star.xml" value="0.5208333333333334" />
+        <entry key="..\:/reddit/app/src/main/res/drawable/ic_thumbs_down.xml" value="0.525" />
+        <entry key="..\:/reddit/app/src/main/res/drawable/ic_thumbs_up.xml" value="0.525" />
         <entry key="..\:/reddit/app/src/main/res/drawable/ic_tracker_main.xml" value="0.525" />
         <entry key="..\:/reddit/app/src/main/res/drawable/search_input_background.xml" value="0.525" />
+        <entry key="..\:/reddit/app/src/main/res/drawable/track_background.xml" value="0.525" />
+        <entry key="..\:/reddit/app/src/main/res/drawable/yellow_profile_image_stroke.xml" value="0.525" />
         <entry key="..\:/reddit/app/src/main/res/layout/activity_main.xml" value="0.5192708333333333" />
         <entry key="..\:/reddit/app/src/main/res/layout/adapter_row.xml" value="0.5005208333333333" />
         <entry key="..\:/reddit/app/src/main/res/layout/content_main.xml" value="0.5005208333333333" />
         <entry key="..\:/reddit/app/src/main/res/layout/feeds_fragment.xml" value="0.2921875" />
+        <entry key="..\:/reddit/app/src/main/res/layout/fragment_search_main.xml" value="0.5022644927536232" />
         <entry key="..\:/reddit/app/src/main/res/layout/item_reddit_post.xml" value="0.5046875" />
+        <entry key="..\:/reddit/app/src/main/res/layout/item_search_reddit.xml" value="0.5046875" />
         <entry key="..\:/reddit/app/src/main/res/layout/main_activity.xml" value="0.5046875" />
         <entry key="..\:/reddit/app/src/main/res/menu/menu_main.xml" value="0.5046875" />
       </map>

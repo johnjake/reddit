@@ -27,10 +27,13 @@ class RedditPostAdapter(private val con: Context) : PagedListAdapter<RedditPost,
     class PostViewHolder(private val binding : ItemRedditPostBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(post: RedditPost, context: Context) {
             binding.apply {
-                score.text = post.score.toString()
-                comments.text = post.num_comments.toString()
-                title.text = post.title
-                avatar.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_profile))
+                tvThumbsDown.text = post.downs.toString()
+                tvThumbsUp.text = post.ups.toString()
+                tvUsername.text = post.author_fullname
+                tvStarCounter.text = post.score.toString()
+                tvCounterComment.text = post.num_comments.toString()
+               tvContent.text = post.title
+                avatar.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_nicolas_profile))
             }
         }
     }

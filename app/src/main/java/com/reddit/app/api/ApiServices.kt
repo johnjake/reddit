@@ -8,15 +8,24 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ApiServices {
-    @GET("subreddit/new.json")
+    @GET("r/subreddit/new.json")
     suspend fun getSubReddit(
         @Query("sort") sortKey: String
     ): RedditData
 
-    @GET("aww/hot.json")
+    @GET("r/aww/hot.json")
     suspend fun fetchPosts(
         @Query("limit") loadSize: Int = 30,
         @Query("after") after: String? = null,
         @Query("before") before: String? = null
     ): Response<RedditApiResponse>
+
+    @GET("search.json&include_over_18=on")
+    suspend fun searchReddit(
+        @Query("q") sortKey: String,
+        @Query("raw_json") rawJson: Int = 1,
+        @Query("sort") sort: String = "new",
+        @Query("limit") limit: Int = 30,
+        @Query("include_over_18") includeRated: String = "on"
+    ): RedditData
 }

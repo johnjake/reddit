@@ -9,11 +9,21 @@
         android:id="@+id/feedsFragment"
         android:name="com.reddit.app.features.feeds.FeedsFragment"
         android:label="feeds_fragment"
-        tools:layout="@layout/feeds_fragment" />
+        tools:layout="@layout/feeds_fragment" >
+        <action
+            android:id="@+id/action_search_main"
+            app:destination="@id/searchMainFragment" />
+    </fragment>
     <activity
         android:id="@+id/redditMainActivity"
         android:name="com.reddit.app.features.main.RedditMainActivity"
         android:label="RedditMainActivity"
         tools:layout="@layout/activity_main"
+        />
+    <fragment
+        android:id="@+id/searchMainFragment"
+        android:name="com.reddit.app.features.search_main.SearchMainFragment"
+        android:label="SearchMainFragment"
+        tools:layout="@layout/fragment_search_main"
         />
 </navigation>
