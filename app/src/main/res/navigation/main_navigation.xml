@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/feedsFragment">
+
+    <fragment
+        android:id="@+id/feedsFragment"
+        android:name="com.reddit.app.features.feeds.FeedsFragment"
+        android:label="feeds_fragment"
+        tools:layout="@layout/feeds_fragment" />
+    <activity
+        android:id="@+id/redditMainActivity"
+        android:name="com.reddit.app.features.main.RedditMainActivity"
+        android:label="RedditMainActivity"
+        tools:layout="@layout/activity_main"
+        />
+</navigation>

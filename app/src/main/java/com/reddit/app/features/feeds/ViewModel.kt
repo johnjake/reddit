@@ -1,4 +1,4 @@
-package com.reddit.app.features.main
+package com.reddit.app.features.feeds
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

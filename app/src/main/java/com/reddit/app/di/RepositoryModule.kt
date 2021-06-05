@@ -1,6 +1,6 @@
 package com.reddit.app.di
 
-import com.reddit.app.features.main.Repository
+import com.reddit.app.features.feeds.Repository
 import org.koin.dsl.module
 
 val repositoryModule = module {

@@ -1,12 +1,9 @@
-package com.reddit.app.data.vo
+package com.reddit.app.data.vo.container
 
-import android.os.Parcelable
-import com.reddit.app.data.vo.hot.RedditVideoPreview
-import kotlinx.parcelize.Parcelize
+import com.reddit.app.data.vo.hot.*
 
-@Parcelize
-data class PostDetails(
-    val all_awardings: List<String>? = emptyList(),
+data class RedditPost (
+    val all_awardings: List<AllAwarding>? = emptyList(),
     val allow_live_comments: Boolean? = false,
     val approved_at_utc: String? = "",
     val approved_by: String? = "",
@@ -55,12 +52,11 @@ data class PostDetails(
     val link_flair_background_color: String? = "",
     val link_flair_css_class: String? = "",
     val link_flair_richtext: List<String>? = emptyList(),
-    val link_flair_template_id: String? = "",
     val link_flair_text: String? = "",
     val link_flair_text_color: String? = "",
     val link_flair_type: String? = "",
     val locked: Boolean? = false,
-    val media: String? = "",
+    //val media: String? = "",
     val media_embed: MediaEmbed? = null,
     val media_only: Boolean? = false,
     val mod_note: String? = "",
@@ -76,7 +72,8 @@ data class PostDetails(
     val parent_whitelist_status: String? = "",
     val permalink: String? = "",
     val pinned: Boolean? = false,
-    val poll_data: PollData? = null,
+    val post_hint: String? = "",
+    val preview: Preview? = null,
     val pwls: Int? = 0,
     val quarantine: Boolean? = false,
     val removal_reason: String? = "",
@@ -85,7 +82,7 @@ data class PostDetails(
     val report_reasons: String? = "",
     val saved: Boolean? = false,
     val score: Int? = 0,
-    // val secure_media: RedditVideoPreview? = null,
+    val secure_media: RedditVideoPreview? = null,
     val secure_media_embed: SecureMediaEmbed? = null,
     val selftext: String? = "",
     val selftext_html: String? = "",
@@ -94,13 +91,13 @@ data class PostDetails(
     val stickied: Boolean? = false,
     val subreddit: String? = "",
     val subreddit_id: String? = "",
-    val subreddit_name_prefixed: String? = "",
+    val subreddit_name_prefixed: String?,
     val subreddit_subscribers: Int? = 0,
     val subreddit_type: String? = "",
     val suggested_sort: String? = "",
     val thumbnail: String? = "",
-    val thumbnail_height: String? = "",
-    val thumbnail_width: String? = "",
+    val thumbnail_height: Int? = 0,
+    val thumbnail_width: Int? = 0,
     val title: String? = "",
     val top_awarded_type: String? = "",
     val total_awards_received: Int? = 0,
@@ -109,9 +106,9 @@ data class PostDetails(
     val upvote_ratio: Double? = 0.0,
     val url: String? = "",
     val url_overridden_by_dest: String? = "",
-    val user_reports: List<String> = emptyList(),
-    val view_count: Int? = 0,
+    val user_reports: List<String>? = emptyList(),
+    val view_count: String? = "",
     val visited: Boolean? = false,
     val whitelist_status: String? = "",
     val wls: Int? = 0
-) : Parcelable
+)

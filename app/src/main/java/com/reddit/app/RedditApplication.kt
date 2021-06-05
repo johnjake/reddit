@@ -1,7 +1,6 @@
 package com.reddit.app
 
 import android.app.Application
-import android.content.Context
 import com.reddit.app.di.networkModule
 import com.reddit.app.di.repositoryModule
 import com.reddit.app.di.viewModelModule
@@ -13,7 +12,6 @@ import timber.log.Timber
 class RedditApplication: Application() {
     override fun onCreate() {
         super.onCreate()
-
         startKoin {
             androidLogger()
             androidContext(this@RedditApplication)
@@ -29,7 +27,4 @@ class RedditApplication: Application() {
 
     }
 
-    companion object {
-        lateinit var appContext: Context
-    }
 }
