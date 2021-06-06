@@ -3,7 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/feedsFragment">
+    app:startDestination="@id/subRedditFragment">
+
+    <fragment
+        android:id="@+id/subRedditFragment"
+        android:name="com.reddit.app.features.subreddit.SubRedditFragment"
+        android:label="SubRedditFragment"
+        tools:layout="@layout/fragment_subreddit"
+        >
+        <action
+            android:id="@+id/action_details_reddit"
+            app:destination="@id/detailSelectedFragment" />
+        <action
+            android:id="@+id/action_search_reddit"
+            app:destination="@id/searchRedditFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/feedsFragment"
@@ -26,19 +40,7 @@
         android:label="SearchMainFragment"
         tools:layout="@layout/fragment_search_main"
         />
-    <fragment
-        android:id="@+id/subRedditFragment"
-        android:name="com.reddit.app.features.subreddit.SubRedditFragment"
-        android:label="SubRedditFragment"
-        tools:layout="@layout/fragment_subreddit"
-        >
-        <action
-            android:id="@+id/action_details_reddit"
-            app:destination="@id/detailSelectedFragment" />
-        <action
-            android:id="@+id/action_search_reddit"
-            app:destination="@id/searchRedditFragment" />
-    </fragment>
+
     <fragment
         android:id="@+id/detailSelectedFragment"
         android:name="com.reddit.app.features.details_reddit.DetailSelectedFragment"
