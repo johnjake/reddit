@@ -19,7 +19,7 @@ class PostsDataSource(coroutineContext: CoroutineContext, private val apiService
         params: LoadParams<String>,
         callback: LoadCallback<String, RedditPost>
     ) {
-        scope?.launch {
+        scope.launch {
             try {
                 val response =
                     apiServices.fetchPosts(loadSize = params.requestedLoadSize, after = params.key)
@@ -41,7 +41,7 @@ class PostsDataSource(coroutineContext: CoroutineContext, private val apiService
         params: LoadParams<String>,
         callback: LoadCallback<String, RedditPost>
     ) {
-        scope?.launch {
+        scope.launch {
             try {
                 val response =
                     apiServices.fetchPosts(loadSize = params.requestedLoadSize, before = params.key)
@@ -62,20 +62,20 @@ class PostsDataSource(coroutineContext: CoroutineContext, private val apiService
         params: LoadInitialParams<String>,
         callback: LoadInitialCallback<String, RedditPost>
     ) {
-        scope?.launch {
+        scope.launch {
             //try {
-                val response = apiServices.fetchPosts(loadSize = params.requestedLoadSize)
-                when{
-                    response.isSuccessful -> {
-                        val listing = response.body()?.data
-                        val redditPosts = listing?.children?.map { it.data }
-                        callback.onResult(redditPosts ?: listOf(), listing?.before, listing?.after)
-                    }
+            val response = apiServices.fetchPosts(loadSize = params.requestedLoadSize)
+            when{
+                response.isSuccessful -> {
+                    val listing = response.body()?.data
+                    val redditPosts = listing?.children?.map { it.data }
+                    callback.onResult(redditPosts ?: listOf(), listing?.before, listing?.after)
                 }
+            }
 
-           // }catch (exception : Exception){
-                    //Timber.e("PostsDataSource Failed to fetch data!")
-           // }
+            // }catch (exception : Exception){
+            //Timber.e("PostsDataSource Failed to fetch data!")
+            // }
         }
     }
 

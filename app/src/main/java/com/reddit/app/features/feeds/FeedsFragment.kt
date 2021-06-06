@@ -24,7 +24,7 @@ class FeedsFragment : Fragment() {
     private var binding: FeedsFragmentBinding? = null
     private val bind get() = binding
     private val viewModel: ViewModel by inject()
-    private val mainModel: MainViewModel by inject()
+    private val mainModel: FeedViewModel by inject()
     private val redAdapter: RedditPostAdapter by lazy { context?.let { RedditPostAdapter(it) }!! }
     private var isLoading = MutableSharedFlow<Boolean>()
 

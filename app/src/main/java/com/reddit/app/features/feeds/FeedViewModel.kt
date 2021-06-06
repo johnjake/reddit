@@ -10,7 +10,7 @@ import com.reddit.app.data.vo.container.RedditPost
 import kotlinx.coroutines.Dispatchers
 
 @Suppress("DEPRECATION")
-class MainViewModel(private val api: ApiServices) : ViewModel() {
+class FeedViewModel(private val api: ApiServices) : ViewModel() {
     var postsLiveData  : LiveData<PagedList<RedditPost>>
     init {
         val config = PagedList.Config.Builder()

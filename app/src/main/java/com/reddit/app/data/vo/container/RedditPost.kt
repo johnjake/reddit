@@ -11,7 +11,7 @@ data class RedditPost (
     val author: String? = "",
     val author_flair_background_color: String? = "",
     val author_flair_css_class: String? = "",
-    val author_flair_richtext: List<String>? = emptyList(),
+
     val author_flair_template_id: String? = "",
     val author_flair_text: String? = "",
     val author_flair_text_color: String? = "",
@@ -26,7 +26,6 @@ data class RedditPost (
     val can_mod_post: Boolean? = false,
     val category: String? = "",
     val clicked: Boolean? = false,
-    val content_categories: String? = "",
     val contest_mode: Boolean? = false,
     val created: Double? = 0.0,
     val created_utc: Double? = 0.0,
@@ -34,7 +33,7 @@ data class RedditPost (
     val distinguished: String? = "",
     val domain: String? = "",
     val downs: Int? = 0,
-    val edited: Boolean? = false,
+
     val gilded: Int? = 0,
     val gildings: Gildings? = null,
     val hidden: Boolean? = false,
@@ -51,7 +50,6 @@ data class RedditPost (
     val likes: String? = "",
     val link_flair_background_color: String? = "",
     val link_flair_css_class: String? = "",
-    val link_flair_richtext: List<String>? = emptyList(),
     val link_flair_text: String? = "",
     val link_flair_text_color: String? = "",
     val link_flair_type: String? = "",

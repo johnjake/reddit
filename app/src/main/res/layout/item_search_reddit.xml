@@ -32,12 +32,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/ivRedditPost"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:elevation="10dp"
-            android:scaleType="fitXY"
             tools:ignore="ContentDescription"
             tools:src="@tools:sample/avatars"
             />

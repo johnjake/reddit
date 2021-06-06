@@ -45,7 +45,7 @@
         android:drawableEnd="@drawable/ic_globe"
         android:hint="@string/search"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/listUpcomingView"
+        app:layout_constraintBottom_toTopOf="@+id/listSearch"
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
         tools:ignore="Autofill" />
 
@@ -71,7 +71,7 @@
         app:layout_constraintGuide_end="16dp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listUpcomingView"
+        android:id="@+id/listSearch"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/pixels_55"

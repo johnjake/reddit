@@ -20,12 +20,12 @@ interface ApiServices {
         @Query("before") before: String? = null
     ): Response<RedditApiResponse>
 
-    @GET("search.json&include_over_18=on")
+    @GET("search.json")
     suspend fun searchReddit(
-        @Query("q") sortKey: String,
+        @Query("q") query: String,
         @Query("raw_json") rawJson: Int = 1,
         @Query("sort") sort: String = "new",
         @Query("limit") limit: Int = 30,
         @Query("include_over_18") includeRated: String = "on"
-    ): RedditData
+    ): RedditApiResponse
 }
