@@ -5,6 +5,7 @@ import com.reddit.app.data.vo.container.RedditApiResponse
 import com.reddit.app.data.vo.hot.DefaultData
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiServices {
@@ -27,9 +28,9 @@ interface ApiServices {
         @Query("before") before: String? = null
     ): Response<RedditApiResponse>
 
-    @GET("{subreddit}/hot.json")
+    @GET("r/{subreddit}/hot.json")
     suspend fun fetchDetails(
-        @Query("subreddit") subTopic: String,
+        @Path("subreddit") subTopic: String,
         @Query("limit") loadSize: Int = 30,
         @Query("after") after: String? = null,
         @Query("before") before: String? = null

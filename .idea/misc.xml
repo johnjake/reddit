@@ -38,8 +38,10 @@
         <entry key="..\:/reddit/app/src/main/res/layout/adapter_row.xml" value="0.5005208333333333" />
         <entry key="..\:/reddit/app/src/main/res/layout/content_main.xml" value="0.5005208333333333" />
         <entry key="..\:/reddit/app/src/main/res/layout/feeds_fragment.xml" value="0.2921875" />
+        <entry key="..\:/reddit/app/src/main/res/layout/fragment_details_reddit.xml" value="0.5046875" />
         <entry key="..\:/reddit/app/src/main/res/layout/fragment_search_main.xml" value="0.5022644927536232" />
         <entry key="..\:/reddit/app/src/main/res/layout/fragment_subreddit.xml" value="0.5046875" />
+        <entry key="..\:/reddit/app/src/main/res/layout/item_details_reddit.xml" value="0.5046875" />
         <entry key="..\:/reddit/app/src/main/res/layout/item_reddit_post.xml" value="0.5046875" />
         <entry key="..\:/reddit/app/src/main/res/layout/item_search_reddit.xml" value="0.5046875" />
         <entry key="..\:/reddit/app/src/main/res/layout/item_subreddit.xml" value="0.5046875" />

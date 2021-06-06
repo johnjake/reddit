@@ -11,7 +11,9 @@ import com.reddit.app.R
 import com.reddit.app.data.vo.Children
 import com.reddit.app.data.vo.State
 import com.reddit.app.databinding.FeedsFragmentBinding
+import com.reddit.app.extension.showNavigation
 import com.reddit.app.features.feeds.adapter.RedditPostAdapter
+import com.reddit.app.features.main.RedditMainActivity
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.collect
@@ -42,6 +44,11 @@ class FeedsFragment : Fragment() {
         super.onStart()
         // viewModel.getNewPost("new")
         observerLoadingData()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        bottomVisibility()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -123,5 +130,12 @@ class FeedsFragment : Fragment() {
         binding?.progressLoader?.visibility = View.VISIBLE
         binding?.progressLoader?.setAnimation(animationResource)
         binding?.progressLoader?.playAnimation()
+    }
+
+    private fun bottomVisibility() {
+        if (RedditMainActivity.onBackPress.value) {
+            RedditMainActivity.onBackPress.value = false
+            activity.showNavigation()
+        }
     }
 }

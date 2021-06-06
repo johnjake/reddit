@@ -10,11 +10,14 @@ import timber.log.Timber
 import kotlin.coroutines.CoroutineContext
 
 @Suppress("DEPRECATION")
-class DetailsDataSource(coroutineContext: CoroutineContext, private val apiServices: ApiServices) :
-    PageKeyedDataSource<String, RedditPost>() {
+class DetailsDataSource(
+    query: String,
+    coroutineContext: CoroutineContext,
+    private val apiServices: ApiServices
+) : PageKeyedDataSource<String, RedditPost>() {
     private val job = Job()
     private val scope = CoroutineScope(coroutineContext + job)
-
+    private val search = query
     override fun loadAfter(
         params: LoadParams<String>,
         callback: LoadCallback<String, RedditPost>
@@ -22,7 +25,7 @@ class DetailsDataSource(coroutineContext: CoroutineContext, private val apiServi
         scope.launch {
             try {
                 val response =
-                    apiServices.fetchPosts(loadSize = params.requestedLoadSize, after = params.key)
+                    apiServices.fetchDetails(search, loadSize = params.requestedLoadSize, after = params.key)
                 when{
                     response.isSuccessful -> {
                         val listing = response.body()?.data
@@ -44,7 +47,7 @@ class DetailsDataSource(coroutineContext: CoroutineContext, private val apiServi
         scope.launch {
             try {
                 val response =
-                    apiServices.fetchPosts(loadSize = params.requestedLoadSize, before = params.key)
+                    apiServices.fetchDetails(search, loadSize = params.requestedLoadSize, before = params.key)
                 when{
                     response.isSuccessful -> {
                         val listing = response.body()?.data
@@ -64,7 +67,7 @@ class DetailsDataSource(coroutineContext: CoroutineContext, private val apiServi
     ) {
         scope.launch {
             //try {
-            val response = apiServices.fetchPosts(loadSize = params.requestedLoadSize)
+            val response = apiServices.fetchDetails(search, loadSize = params.requestedLoadSize)
             when{
                 response.isSuccessful -> {
                     val listing = response.body()?.data

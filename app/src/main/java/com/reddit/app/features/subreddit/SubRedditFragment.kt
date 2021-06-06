@@ -10,7 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.reddit.app.R
 import com.reddit.app.data.vo.Children
 import com.reddit.app.databinding.FragmentSubredditBinding
-import com.reddit.app.features.feeds.adapter.RedditPostAdapter
+import com.reddit.app.extension.showNavigation
+import com.reddit.app.features.main.RedditMainActivity
 import com.reddit.app.features.subreddit.adapter.SubAdapter
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -24,7 +25,7 @@ class SubRedditFragment : Fragment() {
     private var binding: FragmentSubredditBinding? = null
     private val bind get() = binding
     private val mainModel: SubViewModel by inject()
-    private val redAdapter: SubAdapter by lazy { context?.let { SubAdapter(it) }!! }
+    private val redAdapter: SubAdapter by lazy { context?.let { SubAdapter(it) { reddit -> onClickListener(reddit) } }!! }
     private var isLoading = MutableSharedFlow<Boolean>()
 
     override fun onCreateView(
@@ -36,12 +37,6 @@ class SubRedditFragment : Fragment() {
         return bind?.root
     }
 
-    @FlowPreview
-    override fun onStart() {
-        super.onStart()
-        observerLoadingData()
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         lifecycleScope.launchWhenStarted {
@@ -49,6 +44,17 @@ class SubRedditFragment : Fragment() {
         }
         observeLiveData()
         initializeList(view)
+    }
+
+    @FlowPreview
+    override fun onStart() {
+        super.onStart()
+        observerLoadingData()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        bottomVisibility()
     }
 
     @FlowPreview
@@ -64,7 +70,7 @@ class SubRedditFragment : Fragment() {
         mainModel.getPosts().observe(viewLifecycleOwner, Observer {
             redAdapter.submitList(it)
             if(it.size > 0) {
-                Thread.sleep(800)
+                Thread.sleep(200)
                 lifecycleScope.launch {
                     isLoading.emit(false)
                 }
@@ -107,5 +113,18 @@ class SubRedditFragment : Fragment() {
         binding?.progressLoader?.visibility = View.VISIBLE
         binding?.progressLoader?.setAnimation(animationResource)
         binding?.progressLoader?.playAnimation()
+    }
+
+    private fun onClickListener(subReddit: String) {
+        val parameter = SubRedditFragmentDirections.actionDetailsReddit(subReddit)
+        RedditMainActivity.onBackPress.value = true
+        view?.findNavController()?.navigate(parameter)
+    }
+
+    private fun bottomVisibility() {
+        if (RedditMainActivity.onBackPress.value) {
+            RedditMainActivity.onBackPress.value = false
+            activity.showNavigation()
+        }
     }
 }

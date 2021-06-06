@@ -4,7 +4,7 @@
     <style name="TitleTextStyle">
         <item name="android:fontFamily">@font/inter_bold</item>
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:textSize">40sp</item>
+        <item name="android:textSize">26sp</item>
         <item name="android:lineSpacingExtra">-12sp</item>
     </style>
 

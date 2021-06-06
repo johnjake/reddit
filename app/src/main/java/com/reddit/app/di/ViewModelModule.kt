@@ -1,5 +1,6 @@
 package com.reddit.app.di
 
+import com.reddit.app.features.details_reddit.DetailsViewModel
 import com.reddit.app.features.feeds.FeedViewModel
 import com.reddit.app.features.feeds.ViewModel
 import com.reddit.app.features.search_main.SearchViewModel
@@ -12,4 +13,5 @@ val viewModelModule = module {
     viewModel { FeedViewModel(api = get()) }
     viewModel { SearchViewModel(repository = get()) }
     viewModel { SubViewModel(api = get()) }
+    viewModel { DetailsViewModel(api = get()) }
 }

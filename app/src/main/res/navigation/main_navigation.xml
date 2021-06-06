@@ -40,6 +40,10 @@
         android:id="@+id/detailSelectedFragment"
         android:name="com.reddit.app.features.details_reddit.DetailSelectedFragment"
         android:label="DetailSelectedFragment"
-        tools:layout="@layout/fragment_details_reddit"
-        />
+        tools:layout="@layout/fragment_details_reddit">
+        <argument
+            android:name="subreddit"
+            app:argType="string"
+            android:defaultValue="" />
+    </fragment>
 </navigation>

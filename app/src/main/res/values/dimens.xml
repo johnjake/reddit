@@ -144,5 +144,6 @@
     <dimen name="pixels_450">450dp</dimen>
     <dimen name="pixels_470">470dp</dimen>
     <dimen name="pixels_250">250dp</dimen>
+    <dimen name="pixels_75">75dp</dimen>
 
 </resources>
