@@ -48,6 +48,9 @@
             android:name="subreddit"
             app:argType="string"
             android:defaultValue="" />
+        <action
+            android:id="@+id/action_details_view"
+            app:destination="@id/webViewFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchRedditFragment"
@@ -77,4 +80,14 @@
         android:label="SplashActivity"
         tools:layout="@layout/activity_splash"
         />
+    <fragment
+        android:id="@+id/webViewFragment"
+        android:name="com.reddit.app.features.webview.WebViewFragment"
+        android:label="WebViewFragment"
+        tools:layout="@layout/fragment_reddit_web">
+        <argument
+            android:name="linkUrl"
+            app:argType="string"
+            android:defaultValue="" />
+    </fragment>
 </navigation>
