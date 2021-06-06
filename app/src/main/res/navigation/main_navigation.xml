@@ -54,5 +54,21 @@
         android:name="com.reddit.app.features.search_reddit.SearchRedditFragment"
         android:label="SearchRedditFragment"
         tools:layout="@layout/fragment_search_reddit"
+        >
+        <action
+            android:id="@+id/action_search_details"
+            app:destination="@id/detailSelectedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chattingFragment"
+        android:name="com.reddit.app.features.chat.ChattingFragment"
+        android:label="ChattingFragment"
+        tools:layout="@layout/fragment_reddit_chat"
+        />
+    <fragment
+        android:id="@+id/inboxFragment"
+        android:name="com.reddit.app.features.inbox.InboxFragment"
+        android:label="InboxFragment"
+        tools:layout="@layout/fragment_reddit_inbox"
         />
 </navigation>

@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import androidx.paging.ExperimentalPagingApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.reddit.app.R
@@ -15,6 +16,7 @@ import com.reddit.app.data.vo.State
 import com.reddit.app.data.vo.container.RedditPost
 import com.reddit.app.databinding.FragmentSearchRedditBinding
 import com.reddit.app.extension.toast
+import com.reddit.app.features.main.RedditMainActivity
 import com.reddit.app.features.search_reddit.adapter.SearchRedAdapter
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.Job
@@ -32,7 +34,7 @@ class SearchRedditFragment : Fragment() {
     private val bind get() = binding
     private var searchJob: Job? = null
     private val viewModel: SearchRedViewModel by inject()
-    private val searchAdapter: SearchRedAdapter by lazy { context?.let { SearchRedAdapter(it) }!! }
+    private val searchAdapter: SearchRedAdapter by lazy { SearchRedAdapter(context) { reddit -> onClickListener(reddit) } }
     private var isLoading = MutableSharedFlow<Boolean>()
 
     override fun onCreateView(
@@ -84,7 +86,6 @@ class SearchRedditFragment : Fragment() {
                lifecycleScope.launch {
                    isLoading.emit(false)
                }
-               activity?.toast("No result found for ")
            }
         }
     }
@@ -171,6 +172,12 @@ class SearchRedditFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         searchJob?.cancel()
+    }
+
+    private fun onClickListener(subReddit: String) {
+        val parameter = SearchRedditFragmentDirections.actionSearchDetails(subReddit)
+        RedditMainActivity.onBackPress.value = true
+        view?.findNavController()?.navigate(parameter)
     }
 
     companion object {

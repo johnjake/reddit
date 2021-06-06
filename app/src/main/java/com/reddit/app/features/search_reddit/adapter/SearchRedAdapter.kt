@@ -10,7 +10,10 @@ import com.reddit.app.databinding.ItemSearchSubredditBinding
 import com.reddit.app.extension.toAvatar
 import com.reddit.app.utils.DiffUtilCallBack
 
-class SearchRedAdapter(private val context: Context) : ListAdapter<RedditPost, SearchViewHolder>(DiffUtilCallBack()) {
+class SearchRedAdapter(
+    private val context: Context?,
+    private val itemClickListener: (reddit: String) -> Unit
+) : ListAdapter<RedditPost, SearchRedAdapter.SearchViewHolder>(DiffUtilCallBack()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchViewHolder {
         val binding = ItemSearchSubredditBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return SearchViewHolder(binding)
@@ -18,17 +21,20 @@ class SearchRedAdapter(private val context: Context) : ListAdapter<RedditPost, S
 
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
         val currentItem = getItem(position)
-        holder.bind(currentItem, context)
+        context?.let { holder.bind(currentItem, it) }
     }
-}
 
-class SearchViewHolder(private val binding: ItemSearchSubredditBinding) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(post: RedditPost, context: Context) {
-        val randomNum = (1..15).random()
-        binding.apply {
-            tvTitle.text = post.subreddit_name_prefixed
-            tvReddit.text = post.title
-            avatar.toAvatar(randomNum, context)
+    inner class SearchViewHolder(private val binding: ItemSearchSubredditBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(post: RedditPost, context: Context) {
+            val randomNum = (1..15).random()
+            binding.apply {
+                tvTitle.text = post.subreddit_name_prefixed
+                tvReddit.text = post.title
+                avatar.toAvatar(randomNum, context)
+                constrainReddit.setOnClickListener {
+                    itemClickListener(post.subreddit ?: "")
+                }
+            }
         }
     }
 }

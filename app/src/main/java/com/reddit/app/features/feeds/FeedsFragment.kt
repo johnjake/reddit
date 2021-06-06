@@ -79,7 +79,7 @@ class FeedsFragment : Fragment() {
         mainModel.getPosts().observe(viewLifecycleOwner, Observer {
             redAdapter.submitList(it)
             if(it.size > 0) {
-                Thread.sleep(800)
+                Thread.sleep(200)
                 lifecycleScope.launch {
                     isLoading.emit(false)
                 }

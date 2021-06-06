@@ -39,15 +39,14 @@ class RedditMainActivity: AppCompatActivity() {
                         navController.navigate(R.id.subRedditFragment)
                         return true
                     }
-                    /* R.id.inbox_stack -> {
-                         navController.navigate(R.id.inboxFragment)
+                    R.id.inbox_stack -> {
+                         navController.navigate(R.id.chattingFragment)
                          return true
                      }
-                     R.id.profile_stack -> {
-                         navController.navigate(R.id.movieFragment)
-                         // CarDialog.builderAlert(binding.root.context, "Under Construction", "Sorry this page is under-construction")
-                         return true
-                     } */
+                    R.id.profile_stack -> {
+                        navController.navigate(R.id.inboxFragment)
+                        return true
+                    }
                 }
                 return true
             }
