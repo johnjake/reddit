@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/feedsFragment">
+
+    <fragment
+        android:id="@+id/feedsFragment"
+        android:name="com.reddit.app.features.feeds.FeedsFragment"
+        android:label="feeds_fragment"
+        tools:layout="@layout/feeds_fragment" >
+        <action
+            android:id="@+id/action_search_main"
+            app:destination="@id/searchMainFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/redditMainActivity"
+        android:name="com.reddit.app.features.main.RedditMainActivity"
+        android:label="RedditMainActivity"
+        tools:layout="@layout/activity_main"
+        />
+    <fragment
+        android:id="@+id/searchMainFragment"
+        android:name="com.reddit.app.features.search_main.SearchMainFragment"
+        android:label="SearchMainFragment"
+        tools:layout="@layout/fragment_search_main"
+        />
+    <fragment
+        android:id="@+id/subRedditFragment"
+        android:name="com.reddit.app.features.subreddit.SubRedditFragment"
+        android:label="SubRedditFragment"
+        tools:layout="@layout/fragment_subreddit"
+        >
+        <action
+            android:id="@+id/action_details_reddit"
+            app:destination="@id/detailSelectedFragment" />
+        <action
+            android:id="@+id/action_search_reddit"
+            app:destination="@id/searchRedditFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailSelectedFragment"
+        android:name="com.reddit.app.features.details_reddit.DetailSelectedFragment"
+        android:label="DetailSelectedFragment"
+        tools:layout="@layout/fragment_details_reddit">
+        <argument
+            android:name="subreddit"
+            app:argType="string"
+            android:defaultValue="" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchRedditFragment"
+        android:name="com.reddit.app.features.search_reddit.SearchRedditFragment"
+        android:label="SearchRedditFragment"
+        tools:layout="@layout/fragment_search_reddit"
+        >
+        <action
+            android:id="@+id/action_search_details"
+            app:destination="@id/detailSelectedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/chattingFragment"
+        android:name="com.reddit.app.features.chat.ChattingFragment"
+        android:label="ChattingFragment"
+        tools:layout="@layout/fragment_reddit_chat"
+        />
+    <fragment
+        android:id="@+id/inboxFragment"
+        android:name="com.reddit.app.features.inbox.InboxFragment"
+        android:label="InboxFragment"
+        tools:layout="@layout/fragment_reddit_inbox"
+        />
+    <activity
+        android:id="@+id/splashActivity"
+        android:name="com.reddit.app.features.splash.SplashActivity"
+        android:label="SplashActivity"
+        tools:layout="@layout/activity_splash"
+        />
+</navigation>

@@ -1,4 +1,4 @@
-package com.reddit.app.features.main
+package com.reddit.app.features.feeds
 
 import com.reddit.app.api.ApiServices
 import com.reddit.app.data.vo.Children

@@ -1,6 +1,7 @@
 package com.reddit.app.data.vo
 
 import android.os.Parcelable
+import com.reddit.app.data.vo.hot.RedditVideoPreview
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -13,7 +14,7 @@ data class PostDetails(
     val author: String? = "",
     val author_flair_background_color: String? = "",
     val author_flair_css_class: String? = "",
-    val author_flair_richtext: List<String>? = emptyList(),
+
     val author_flair_template_id: String? = "",
     val author_flair_text: String? = "",
     val author_flair_text_color: String? = "",
@@ -28,7 +29,6 @@ data class PostDetails(
     val can_mod_post: Boolean? = false,
     val category: String? = "",
     val clicked: Boolean? = false,
-    val content_categories: String? = "",
     val contest_mode: Boolean? = false,
     val created: Double? = 0.0,
     val created_utc: Double? = 0.0,
@@ -36,7 +36,6 @@ data class PostDetails(
     val distinguished: String? = "",
     val domain: String? = "",
     val downs: Int? = 0,
-    val edited: Boolean? = false,
     val gilded: Int? = 0,
     val gildings: Gildings? = null,
     val hidden: Boolean? = false,
@@ -53,7 +52,6 @@ data class PostDetails(
     val likes: String? = "",
     val link_flair_background_color: String? = "",
     val link_flair_css_class: String? = "",
-    val link_flair_richtext: List<String>? = emptyList(),
     val link_flair_template_id: String? = "",
     val link_flair_text: String? = "",
     val link_flair_text_color: String? = "",
@@ -84,7 +82,7 @@ data class PostDetails(
     val report_reasons: String? = "",
     val saved: Boolean? = false,
     val score: Int? = 0,
-    val secure_media: String? = "",
+    // val secure_media: RedditVideoPreview? = null,
     val secure_media_embed: SecureMediaEmbed? = null,
     val selftext: String? = "",
     val selftext_html: String? = "",
