@@ -25,7 +25,7 @@ class SearchMainAdapter(private val context: Context) : ListAdapter<RedditPost, 
 
 class SearchViewHolder(private val binding: ItemSearchRedditBinding) : RecyclerView.ViewHolder(binding.root) {
     fun bind(post: RedditPost, context: Context) {
-        val ran = (1..10).random()
+        val ran = (1..15).random()
         binding.apply {
             tvTitle.text = post.author_fullname
             tvDescription.text = post.title

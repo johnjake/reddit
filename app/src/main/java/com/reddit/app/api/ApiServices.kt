@@ -20,6 +20,21 @@ interface ApiServices {
         @Query("before") before: String? = null
     ): Response<RedditApiResponse>
 
+    @GET("hot.json")
+    suspend fun fetchPostsReddit(
+        @Query("limit") loadSize: Int = 30,
+        @Query("after") after: String? = null,
+        @Query("before") before: String? = null
+    ): Response<RedditApiResponse>
+
+    @GET("{subreddit}/hot.json")
+    suspend fun fetchDetails(
+        @Query("subreddit") subTopic: String,
+        @Query("limit") loadSize: Int = 30,
+        @Query("after") after: String? = null,
+        @Query("before") before: String? = null
+    ): Response<RedditApiResponse>
+
     @GET("search.json")
     suspend fun searchReddit(
         @Query("q") query: String,

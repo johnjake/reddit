@@ -23,29 +23,25 @@
         android:orientation="vertical"
         app:layout_constraintGuide_end="@dimen/pixels_16" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/imageContainer"
-        android:layout_width="95dp"
-        android:layout_height="100dp"
-        app:cardCornerRadius="@dimen/pixels_12"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/ivRedditPost"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="@dimen/pixels_80"
             android:elevation="10dp"
+            android:layout_marginEnd="@dimen/pixels_250"
             tools:ignore="ContentDescription"
             tools:src="@tools:sample/avatars"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/leftGuideline"
+            app:layout_constraintEnd_toStartOf="@id/cardView"
+            app:layout_constraintTop_toTopOf="parent"
             />
-    </androidx.cardview.widget.CardView>
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="140dp"
-        android:layout_marginStart="138dp"
+        android:layout_marginStart="100dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="16dp"

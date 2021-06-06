@@ -35,19 +35,19 @@ class RedditMainActivity: AppCompatActivity() {
                         navController.navigate(R.id.feedsFragment)
                         return true
                     }
-                   /* R.id.car_stack -> {
-                        navController.navigate(R.id.carsFragment)
+                    R.id.car_stack -> {
+                        navController.navigate(R.id.subRedditFragment)
                         return true
                     }
-                    R.id.inbox_stack -> {
-                        navController.navigate(R.id.inboxFragment)
-                        return true
-                    }
-                    R.id.profile_stack -> {
-                        navController.navigate(R.id.movieFragment)
-                        // CarDialog.builderAlert(binding.root.context, "Under Construction", "Sorry this page is under-construction")
-                        return true
-                    } */
+                    /* R.id.inbox_stack -> {
+                         navController.navigate(R.id.inboxFragment)
+                         return true
+                     }
+                     R.id.profile_stack -> {
+                         navController.navigate(R.id.movieFragment)
+                         // CarDialog.builderAlert(binding.root.context, "Under Construction", "Sorry this page is under-construction")
+                         return true
+                     } */
                 }
                 return true
             }

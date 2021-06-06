@@ -10,12 +10,17 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.ExperimentalPagingApi
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.reddit.app.R
 import com.reddit.app.data.vo.State
 import com.reddit.app.data.vo.container.RedditPost
 import com.reddit.app.databinding.FragmentSearchMainBinding
 import com.reddit.app.features.search_main.adapter.SearchMainAdapter
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import timber.log.Timber
@@ -26,6 +31,8 @@ class SearchMainFragment : Fragment() {
     private var searchJob: Job? = null
     private val viewModel: SearchViewModel by inject()
     private val searchAdapter: SearchMainAdapter by lazy { context?.let { SearchMainAdapter(it) }!! }
+    private var isLoading = MutableSharedFlow<Boolean>()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -35,10 +42,13 @@ class SearchMainFragment : Fragment() {
         return bind?.root
     }
 
+    @FlowPreview
     @ExperimentalPagingApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val query = savedInstanceState?.getString(last_query) ?: default_title
+        initialLoading()
+        observerLoadingData()
         initializedSearchView(view)
         observerSearchResult()
         searchQuery(query)
@@ -84,13 +94,20 @@ class SearchMainFragment : Fragment() {
 
     private fun handleSuccessResult(data: List<RedditPost>?) {
         searchAdapter.submitList(data?.toMutableList())
+        if(data?.size ?: 0 > 0) {
+            lifecycleScope.launch {
+                isLoading.emit(false)
+            }
+        }
     }
 
     @ExperimentalPagingApi
     private fun initializedSearch(query: String) {
         binding?.tvSearch?.addTextChangedListener(object: TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) { }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                initialLoading()
+            }
             override fun afterTextChanged(s: Editable?) {
                 if(s?.isNotEmpty() == true) {
                     searchQuery(s.toString())
@@ -110,5 +127,42 @@ class SearchMainFragment : Fragment() {
     companion object {
         private const val last_query: String = "last_search_query"
         private const val default_title = "Star Wars"
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        when (isLoading) {
+            true -> showAnimation(R.raw.loading)
+            false -> hideAnimation()
+        }
+    }
+
+    private fun hideAnimation() {
+        binding?.progressLoader?.visibility = View.GONE
+    }
+
+    private fun showAnimation(animationResource: Int) {
+        binding?.progressLoader?.visibility = View.VISIBLE
+        binding?.progressLoader?.setAnimation(animationResource)
+        binding?.progressLoader?.playAnimation()
+    }
+
+    private fun initialLoading() {
+        lifecycleScope.launchWhenStarted {
+            isLoading.emit(true)
+        }
+    }
+
+    @FlowPreview
+    private fun observerLoadingData() {
+        lifecycleScope.launch {
+            isLoading.distinctUntilChanged().collect { load ->
+                showLoading(load)
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        searchJob?.cancel()
     }
 }

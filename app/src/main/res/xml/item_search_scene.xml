@@ -22,7 +22,7 @@
             motion:layout_constraintStart_toStartOf="parent"
             android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp"
-            android:id="@+id/imageContainer" />
+            android:id="@+id/ivRedditPost" />
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
@@ -34,7 +34,7 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="300dp"
-            android:id="@+id/imageContainer" />
+            android:id="@+id/ivRedditPost" />
         <Constraint
             android:id="@+id/cardView"
             motion:layout_constraintEnd_toEndOf="parent"

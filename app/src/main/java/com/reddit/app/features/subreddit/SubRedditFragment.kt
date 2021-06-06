@@ -1,4 +1,4 @@
-package com.reddit.app.features.feeds
+package com.reddit.app.features.subreddit
 
 import android.os.Bundle
 import android.view.*
@@ -9,9 +9,9 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.reddit.app.R
 import com.reddit.app.data.vo.Children
-import com.reddit.app.data.vo.State
-import com.reddit.app.databinding.FeedsFragmentBinding
+import com.reddit.app.databinding.FragmentSubredditBinding
 import com.reddit.app.features.feeds.adapter.RedditPostAdapter
+import com.reddit.app.features.subreddit.adapter.SubAdapter
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.collect
@@ -20,12 +20,11 @@ import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 
-class FeedsFragment : Fragment() {
-    private var binding: FeedsFragmentBinding? = null
+class SubRedditFragment : Fragment() {
+    private var binding: FragmentSubredditBinding? = null
     private val bind get() = binding
-    private val viewModel: ViewModel by inject()
-    private val mainModel: FeedViewModel by inject()
-    private val redAdapter: RedditPostAdapter by lazy { context?.let { RedditPostAdapter(it) }!! }
+    private val mainModel: SubViewModel by inject()
+    private val redAdapter: SubAdapter by lazy { context?.let { SubAdapter(it) }!! }
     private var isLoading = MutableSharedFlow<Boolean>()
 
     override fun onCreateView(
@@ -33,14 +32,13 @@ class FeedsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FeedsFragmentBinding.inflate(inflater, container, false)
+        binding = FragmentSubredditBinding.inflate(inflater, container, false)
         return bind?.root
     }
 
     @FlowPreview
     override fun onStart() {
         super.onStart()
-        // viewModel.getNewPost("new")
         observerLoadingData()
     }
 
@@ -49,12 +47,6 @@ class FeedsFragment : Fragment() {
         lifecycleScope.launchWhenStarted {
             isLoading.emit(true)
         }
-        /* lifecycleScope.launchWhenStarted {
-            viewModel.dataState.collect { state ->
-                handleSuccessState(state)
-            }
-        } */
-
         observeLiveData()
         initializeList(view)
     }
@@ -82,19 +74,11 @@ class FeedsFragment : Fragment() {
 
     private fun initializeList(view: View) {
         binding?.apply {
-            feedList.layoutManager = LinearLayoutManager(context)
-            feedList.adapter = redAdapter
-            searchButton.setOnClickListener {
+            subRedditList.layoutManager = LinearLayoutManager(context)
+            subRedditList.adapter = redAdapter
+           /* searchButton.setOnClickListener {
                 view.findNavController().navigate(R.id.action_search_main)
-            }
-        }
-    }
-
-    private fun handleSuccessState(state: State<List<Children>?>) {
-        when(state) {
-            is State.Data -> handleResult(state.data)
-            is State.Error -> handleError(state.error)
-            else -> Timber.e("An error occurred during query request!")
+            } */
         }
     }
 

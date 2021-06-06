@@ -26,4 +26,20 @@
         android:label="SearchMainFragment"
         tools:layout="@layout/fragment_search_main"
         />
+    <fragment
+        android:id="@+id/subRedditFragment"
+        android:name="com.reddit.app.features.subreddit.SubRedditFragment"
+        android:label="SubRedditFragment"
+        tools:layout="@layout/fragment_subreddit"
+        >
+        <action
+            android:id="@+id/action_details_reddit"
+            app:destination="@id/detailSelectedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailSelectedFragment"
+        android:name="com.reddit.app.features.details_reddit.DetailSelectedFragment"
+        android:label="DetailSelectedFragment"
+        tools:layout="@layout/fragment_details_reddit"
+        />
 </navigation>
