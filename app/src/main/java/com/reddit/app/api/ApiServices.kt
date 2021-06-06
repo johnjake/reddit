@@ -44,4 +44,13 @@ interface ApiServices {
         @Query("limit") limit: Int = 30,
         @Query("include_over_18") includeRated: String = "on"
     ): RedditApiResponse
+
+    @GET("r/{query}/hot.json")
+    suspend fun searchSubReddit(
+        @Path("query") query: String,
+        @Query("raw_json") rawJson: Int = 1,
+        @Query("sort") sort: String = "new",
+        @Query("limit") limit: Int = 30,
+        @Query("include_over_18") includeRated: String = "on"
+    ): RedditApiResponse
 }

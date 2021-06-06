@@ -35,6 +35,9 @@
         <action
             android:id="@+id/action_details_reddit"
             app:destination="@id/detailSelectedFragment" />
+        <action
+            android:id="@+id/action_search_reddit"
+            app:destination="@id/searchRedditFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailSelectedFragment"
@@ -46,4 +49,10 @@
             app:argType="string"
             android:defaultValue="" />
     </fragment>
+    <fragment
+        android:id="@+id/searchRedditFragment"
+        android:name="com.reddit.app.features.search_reddit.SearchRedditFragment"
+        android:label="SearchRedditFragment"
+        tools:layout="@layout/fragment_search_reddit"
+        />
 </navigation>

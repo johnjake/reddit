@@ -13,14 +13,12 @@ import com.reddit.app.R
 import com.reddit.app.databinding.FragmentDetailsRedditBinding
 import com.reddit.app.extension.hideNavigation
 import com.reddit.app.features.details_reddit.adapter.DetailsAdapter
-import com.reddit.app.features.feeds.adapter.RedditPostAdapter
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
-import timber.log.Timber
 
 class DetailSelectedFragment : Fragment() {
     private var binding: FragmentDetailsRedditBinding? = null

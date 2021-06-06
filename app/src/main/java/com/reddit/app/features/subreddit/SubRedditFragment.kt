@@ -1,6 +1,8 @@
 package com.reddit.app.features.subreddit
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -8,7 +10,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.reddit.app.R
-import com.reddit.app.data.vo.Children
 import com.reddit.app.databinding.FragmentSubredditBinding
 import com.reddit.app.extension.showNavigation
 import com.reddit.app.features.main.RedditMainActivity
@@ -19,7 +20,6 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
-import timber.log.Timber
 
 class SubRedditFragment : Fragment() {
     private var binding: FragmentSubredditBinding? = null
@@ -82,19 +82,9 @@ class SubRedditFragment : Fragment() {
         binding?.apply {
             subRedditList.layoutManager = LinearLayoutManager(context)
             subRedditList.adapter = redAdapter
-           /* searchButton.setOnClickListener {
-                view.findNavController().navigate(R.id.action_search_main)
-            } */
-        }
-    }
-
-    private fun handleError(error: Throwable) {
-        Timber.e("Error Throw Exception: ${error.message}")
-    }
-
-    private fun handleResult(data: List<Children>?) {
-        data?.forEach {
-            Timber.d("Title: ${it.data.title}")
+            searchButton.setOnClickListener {
+               view.findNavController().navigate(R.id.action_search_reddit)
+            }
         }
     }
 

@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageMap"
+            android:id="@+id/imageDetails"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@string/alt_feed"
@@ -43,7 +43,7 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/carTrack"
+        android:id="@+id/tvComment"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/pixels_30"
         android:layout_marginStart="@dimen/pixels_16"
