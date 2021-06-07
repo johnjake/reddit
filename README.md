@@ -13,7 +13,8 @@ For the Reddit Client development the following IDE and patterns are used:
     Kotlin Version: 1.4.31
     Gradle Type: DLS
 
-    Language: Kotlin
+    Language: Kotlin,
+              XML
 
     Architechture Pattern: MVVM
     
