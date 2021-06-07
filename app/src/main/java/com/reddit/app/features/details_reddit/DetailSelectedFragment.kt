@@ -24,7 +24,7 @@ class DetailSelectedFragment : Fragment() {
     private var binding: FragmentDetailsRedditBinding? = null
     private val bind get() = binding
     private val mainModel: DetailsViewModel by inject()
-    private val redAdapter: DetailsAdapter by lazy { context?.let { DetailsAdapter(it) }!! }
+    private val redAdapter: DetailsAdapter by lazy { DetailsAdapter(context) { link -> onClickListener(link) } }
     private var isLoading = MutableSharedFlow<Boolean>()
 
     override fun onCreateView(
@@ -104,5 +104,10 @@ class DetailSelectedFragment : Fragment() {
         binding?.progressLoader?.visibility = View.VISIBLE
         binding?.progressLoader?.setAnimation(animationResource)
         binding?.progressLoader?.playAnimation()
+    }
+
+    private fun onClickListener(url: String) {
+        val arg = DetailSelectedFragmentDirections.actionDetailsView(url)
+        view?.findNavController()?.navigate(arg)
     }
 }

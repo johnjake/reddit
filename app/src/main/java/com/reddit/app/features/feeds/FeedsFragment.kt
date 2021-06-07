@@ -8,8 +8,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.reddit.app.R
-import com.reddit.app.data.vo.Children
-import com.reddit.app.data.vo.State
 import com.reddit.app.databinding.FeedsFragmentBinding
 import com.reddit.app.extension.showNavigation
 import com.reddit.app.features.feeds.adapter.RedditPostAdapter
@@ -20,14 +18,12 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
-import timber.log.Timber
 
 class FeedsFragment : Fragment() {
     private var binding: FeedsFragmentBinding? = null
     private val bind get() = binding
-    private val viewModel: ViewModel by inject()
     private val mainModel: FeedViewModel by inject()
-    private val redAdapter: RedditPostAdapter by lazy { context?.let { RedditPostAdapter(it) }!! }
+    private val redAdapter: RedditPostAdapter by lazy { RedditPostAdapter(context) { link -> onClickListener(link) } }
     private var isLoading = MutableSharedFlow<Boolean>()
 
     override fun onCreateView(
@@ -42,7 +38,6 @@ class FeedsFragment : Fragment() {
     @FlowPreview
     override fun onStart() {
         super.onStart()
-        // viewModel.getNewPost("new")
         observerLoadingData()
     }
 
@@ -56,12 +51,6 @@ class FeedsFragment : Fragment() {
         lifecycleScope.launchWhenStarted {
             isLoading.emit(true)
         }
-        /* lifecycleScope.launchWhenStarted {
-            viewModel.dataState.collect { state ->
-                handleSuccessState(state)
-            }
-        } */
-
         observeLiveData()
         initializeList(view)
     }
@@ -97,24 +86,6 @@ class FeedsFragment : Fragment() {
         }
     }
 
-    private fun handleSuccessState(state: State<List<Children>?>) {
-        when(state) {
-            is State.Data -> handleResult(state.data)
-            is State.Error -> handleError(state.error)
-            else -> Timber.e("An error occurred during query request!")
-        }
-    }
-
-    private fun handleError(error: Throwable) {
-        Timber.e("Error Throw Exception: ${error.message}")
-    }
-
-    private fun handleResult(data: List<Children>?) {
-        data?.forEach {
-            Timber.d("Title: ${it.data.title}")
-        }
-    }
-
     private fun showLoading(isLoading: Boolean) {
         when (isLoading) {
             true -> showAnimation(R.raw.loading)
@@ -137,5 +108,10 @@ class FeedsFragment : Fragment() {
             RedditMainActivity.onBackPress.value = false
             activity.showNavigation()
         }
+    }
+
+    private fun onClickListener(link: String) {
+        val arg = FeedsFragmentDirections.actionFeedsWeb(link)
+        view?.findNavController()?.navigate(arg)
     }
 }

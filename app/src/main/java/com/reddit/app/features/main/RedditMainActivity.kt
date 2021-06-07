@@ -32,11 +32,11 @@ class RedditMainActivity: AppCompatActivity() {
             override fun onNavigationItemSelected(@NonNull item: MenuItem): Boolean {
                 when (item.itemId) {
                     R.id.feeds_stack -> {
-                        navController.navigate(R.id.feedsFragment)
+                        navController.navigate(R.id.subRedditFragment)
                         return true
                     }
                     R.id.car_stack -> {
-                        navController.navigate(R.id.subRedditFragment)
+                        navController.navigate(R.id.feedsFragment)
                         return true
                     }
                     R.id.inbox_stack -> {

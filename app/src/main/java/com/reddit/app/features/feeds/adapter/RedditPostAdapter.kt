@@ -16,7 +16,10 @@ import com.reddit.app.extension.toSubReddit
 import com.reddit.app.utils.DiffUtilCallBack
 
 @Suppress("DEPRECATION")
-class RedditPostAdapter(private val con: Context) : PagedListAdapter<RedditPost, RedditPostAdapter.PostViewHolder>(DiffUtilCallBack()
+class RedditPostAdapter(
+    private val context: Context?,
+    private val itemClickListener: (webLink: String) -> Unit
+) : PagedListAdapter<RedditPost, RedditPostAdapter.PostViewHolder>(DiffUtilCallBack()
 ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         val binding = ItemRedditPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -25,7 +28,7 @@ class RedditPostAdapter(private val con: Context) : PagedListAdapter<RedditPost,
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
         val currentItem = getItem(position)
-        currentItem?.let { holder.bind(it, con) }
+        currentItem?.let { holder.bind(it) }
     }
 
     override fun getItemCount(): Int {
@@ -37,9 +40,10 @@ class RedditPostAdapter(private val con: Context) : PagedListAdapter<RedditPost,
         var dataSize: Int = 0
     }
 
-    class PostViewHolder(private val binding : ItemRedditPostBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(post: RedditPost, context: Context) {
+    inner class PostViewHolder(private val binding : ItemRedditPostBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(post: RedditPost) {
             val randomNum = (1..15).random()
+            val link = post.permalink ?: ""
             upvoteCriteria(post.ups ?: 0)
             binding.apply {
                 tvThumbsDown.text = post.downs.toString()
@@ -48,8 +52,11 @@ class RedditPostAdapter(private val con: Context) : PagedListAdapter<RedditPost,
                 tvStarCounter.text = post.score.toString()
                 tvCounterComment.text = post.num_comments.toString()
                 tvContent.text = post.title
-                avatar.toAvatar(randomNum, context)
-                imageFeed.toSubReddit(randomNum, context)
+                context?.let { avatar.toAvatar(randomNum, it) }
+                context?.let { imageFeed.toSubReddit(randomNum, it) }
+                imageFeed.setOnClickListener {
+                    itemClickListener(link)
+                }
             }
         }
         @SuppressLint("SetTextI18n")

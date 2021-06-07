@@ -109,7 +109,7 @@ class SearchRedditFragment : Fragment() {
                 isLoading.emit(false)
             }
         } else {
-            activity?.toast("No result found!")
+            Timber.d("No result found!")
         }
     }
 

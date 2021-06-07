@@ -24,17 +24,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-    <ImageButton
-        android:id="@+id/email_button"
-        android:layout_width="46dp"
-        android:layout_height="46dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/search_input_background"
-        android:contentDescription="@string/search"
-        android:elevation="16dp"
-        android:src="@drawable/ic_envelop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/topGuideline" />
+
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/topGuideline"
@@ -56,23 +53,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_end="16dp" />
-
-    <Button
-        android:id="@+id/save"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/pixels_56"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/selector_done_ask"
-        android:paddingTop="4dp"
-        android:paddingBottom="4dp"
-        android:text="@string/check_inbox"
-        android:textAllCaps="false"
-
-        app:layout_constraintBottom_toTopOf="@+id/progress_loader"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/progress_loader"
