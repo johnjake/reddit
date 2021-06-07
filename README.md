@@ -42,7 +42,7 @@ For the Reddit Client development the following IDE and patterns are used:
     
 USER API: 
          
-         * The users list can be obtained at using this endpoint: https://www.reddit.com/dev/api. 
+         * The subreddit and post list can be obtained at using this endpoint: https://www.reddit.com/dev/api. 
 
 FEATURES: 
           
