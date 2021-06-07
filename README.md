@@ -36,9 +36,9 @@ For the Reddit Client development the following IDE and patterns are used:
    
     username: johnjake2000
     password: livelove
+    api url: www.reddit.com/dev/api
     
     
-
 USER API: 
          
          * The users list can be obtained at using this endpoint: https://www.reddit.com/dev/api. 
