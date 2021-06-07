@@ -62,9 +62,9 @@ class DetailsAdapter(
         @SuppressLint("SetTextI18n")
         private fun upvoteCriteria(upvote: Int) {
             when {
-                upvote == 0 -> binding.tvComment.text = " No Upvote size: $dataSize"
-                upvote > 5 -> binding.tvComment.text = "Great Post size: $dataSize "
-                upvote <= 5 -> binding.tvComment.text = "Less than 5 size: $dataSize"
+                upvote == 0 -> binding.tvComment.text = " No Upvote - list size: $dataSize"
+                upvote > 5 -> binding.tvComment.text = "Great Post - list size: $dataSize "
+                upvote <= 5 -> binding.tvComment.text = "Less than 5 - list size: $dataSize"
             }
         }
     }

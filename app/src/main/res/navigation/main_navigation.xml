@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_search_main"
             app:destination="@id/searchMainFragment" />
+        <action
+            android:id="@+id/action_feeds_web"
+            app:destination="@id/webViewFragment" />
     </fragment>
     <activity
         android:id="@+id/redditMainActivity"

@@ -1,8 +1,6 @@
 package com.reddit.app.features.subreddit
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -42,7 +40,7 @@ class SubRedditFragment : Fragment() {
         lifecycleScope.launchWhenStarted {
             isLoading.emit(true)
         }
-        observeLiveData()
+        observerListData()
         initializeList(view)
     }
 
@@ -66,7 +64,7 @@ class SubRedditFragment : Fragment() {
         }
     }
 
-    private fun observeLiveData() {
+    private fun observerListData() {
         mainModel.getPosts().observe(viewLifecycleOwner, Observer {
             redAdapter.submitList(it)
             if(it.size > 0) {

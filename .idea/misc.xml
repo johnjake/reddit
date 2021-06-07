@@ -7,13 +7,17 @@
         <entry key="..\:/reddit/app/src/main/res/drawable-v24/ic_share_android.xml" value="0.525" />
         <entry key="..\:/reddit/app/src/main/res/drawable-v24/ic_star.xml" value="0.5208333333333334" />
         <entry key="..\:/reddit/app/src/main/res/drawable/bg_circle_black_alpha_80.xml" value="0.525" />
+        <entry key="..\:/reddit/app/src/main/res/drawable/bg_corner_alert_dialog.xml" value="0.525" />
+        <entry key="..\:/reddit/app/src/main/res/drawable/bg_corner_cancel.xml" value="0.525" />
         <entry key="..\:/reddit/app/src/main/res/drawable/black_gradient_appbar_background.xml" value="0.525" />
         <entry key="..\:/reddit/app/src/main/res/drawable/black_gradient_background.xml" value="0.525" />
+        <entry key="..\:/reddit/app/src/main/res/drawable/button_style.xml" value="0.525" />
         <entry key="..\:/reddit/app/src/main/res/drawable/edit_text_background.xml" value="0.525" />
         <entry key="..\:/reddit/app/src/main/res/drawable/email_text_background.xml" value="0.525" />
         <entry key="..\:/reddit/app/src/main/res/drawable/ic_chat_person.xml" value="0.525" />
         <entry key="..\:/reddit/app/src/main/res/drawable/ic_comment.xml" value="0.525" />
         <entry key="..\:/reddit/app/src/main/res/drawable/ic_envelop.xml" value="0.525" />
+        <entry key="..\:/reddit/app/src/main/res/drawable/ic_github.xml" value="0.525" />
         <entry key="..\:/reddit/app/src/main/res/drawable/ic_globe.xml" value="0.525" />
         <entry key="..\:/reddit/app/src/main/res/drawable/ic_home_menu.xml" value="0.525" />
         <entry key="..\:/reddit/app/src/main/res/drawable/ic_home_menu_checked.xml" value="0.525" />
@@ -59,6 +63,7 @@
         <entry key="..\:/reddit/app/src/main/res/layout/item_search_subreddit.xml" value="0.24445005045408677" />
         <entry key="..\:/reddit/app/src/main/res/layout/item_subreddit.xml" value="0.5046875" />
         <entry key="..\:/reddit/app/src/main/res/layout/main_activity.xml" value="0.5046875" />
+        <entry key="..\:/reddit/app/src/main/res/layout/reddit_alert_layout.xml" value="0.5046875" />
         <entry key="..\:/reddit/app/src/main/res/menu/menu_main.xml" value="0.5046875" />
       </map>
     </option>
