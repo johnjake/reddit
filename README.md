@@ -1,4 +1,4 @@
-# Reddit Client ![alt text](https://github.com/johnjake/car-trackers/blob/master/ic_car_top.png)
+# Reddit Client ![alt text](https://github.com/johnjake/reddit/blob/master/reddit_icon.png)
 
 This app is about listing of reddit client post, reddit topics (subreddit). 
 
