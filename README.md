@@ -58,7 +58,7 @@ FEATURES:
    
    User Interface:
    
-  ![alt text](https://github.com/johnjake/car-trackers/blob/screen-shot/car_track_screen.png)
+  ![alt text](https://github.com/johnjake/reddit/blob/master/reddit.png)
 
 
 
