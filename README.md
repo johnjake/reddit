@@ -36,7 +36,7 @@ For the Reddit Client development the following IDE and patterns are used:
    API Credential:
    
     username: johnjake2000
-    password: livelove
+    password: livelove_2000
     api url: www.reddit.com/dev/api
     
     
