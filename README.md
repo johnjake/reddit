@@ -1,15 +1,15 @@
 # Reddit Client ![alt text](https://github.com/johnjake/car-trackers/blob/master/ic_car_top.png)
 
-This app is about listing of car owners including personal information of the owner and vehicles. The app mainly runs locally. 
+This app is about listing of reddit client post, reddit topics (subreddit). 
 
-For the CarTrack development the following IDE and patterns are used: 
+For the Reddit Client development the following IDE and patterns are used: 
 
 
-    IDE: Android Studio 2020.3.1 Canary 14 
+    IDE: Android Studio Artic Fox 2020.3.1 Beta 3
     Runtime Version: 11.8.0 (jre)
     VM: OpenJDK 64-Bit
 
-    Gradle Version: 7.0.0-alpha14
+    Gradle Version: 7.0.0-beta03
     Kotlin Version: 1.4.31
     Gradle Type: DLS
 
@@ -23,39 +23,42 @@ For the CarTrack development the following IDE and patterns are used:
     Http Client: Retrofit-2.9.0
     Concurrency Library: Coroutine-1.4.2
     Reactive Extensions: RxJava2 (2.2.10)
-    RecyclerView Paging: Paging3 (3.0.0-beta03)
+    RecyclerView Paging: Paging3 (3.0.0)
     Navigation Component: 2.3.5
+    Animation: lottie:3.4.4
+               MotionLayout
+    
     Room: 2.3.0-alpha03
     Unit Test: koin-test:2.0.1
     
   
-   App Test Credential: (or create a new user account)
+   API Credential:
    
-    username: sincere@april.biz
-    password: password1
+    username: johnjake2000
+    password: livelove
     
     
 
 USER API: 
          
-         * The users list can be obtained at using this endpoint: https://jsonplaceholder.typicode.com/users  in JSON format, and a total of 10 users. 
+         * The users list can be obtained at using this endpoint: https://www.reddit.com/dev/api. 
 
 FEATURES: 
           
-          * When you run the app for the first time it will access first the endpoint API then persist the user data to room (SQLite). 
-          To login the cartrack app you may use the email as username and password: `password+n` sample username: `sincere@april.biz` password: `password1` 
-          the n'th is the user id.  
+          * List all subreddit (categories)
+          * Search subreddit (categories)
+          * List of all post in specific subreddit (category)
+          * List number of comments and upvotes in each subreddit (categories)
+          * Subreddit mark as less than 5 upvotes or greater than 5 upvotes (Great) and zero upvotes for no upvotes.
+          * Open webview for specific subreddit.
+          * Integrating pagination
           
-          * In case of failure to fetch from end point due to 404, 403, 500 or other server failure, a simple fallback was integrated to shift from end-point to local (car_owners.json)
-          
-          * You can also add user and sign-up can be found in login screen.
-          * Profile user can be modify or edit.
-          
-          * Paging was not coded due to time limit and endpoint does not have pagination. 
-          * Search features are not yet integrated due to time limitation of the app development.
+SETBACK (Need to improved): 
+       
+         * Unable to get reddit token as it requires time to fixed, so uses local images to simulate the UI/UX. 
+         * Unable to comply some requirements like mark high comment or upvotes since it uses pagination, and requires time to integrate the features.
+         * It uses deprecated paging PagedListAdapter due to reddit end points does not provide pagination number, instead the pagination are query by limit item. 
 
-          
-   
    User Interface:
    
   ![alt text](https://github.com/johnjake/reddit/blob/master/reddit.png)
